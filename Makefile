@@ -6,7 +6,7 @@
 #    By: ahammad <ahammad@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/28 13:48:33 by ahammad           #+#    #+#              #
-#    Updated: 2021/10/27 15:43:21 by ahammad          ###   ########.fr        #
+#    Updated: 2021/10/27 18:01:31 by ahammad          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ NAME_CLIENT		= client
 #NAME = fdf
 SRC_SERVER		= server.c
 SRC_CLIENT		= client.c
+OBJ_CLIENT		= $(SRC_CLIENT:.c=.o)
+OBJ_SERVER		= $(SRC_SERVER:.c=.o)
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
@@ -26,13 +28,14 @@ INC_DIR = ./includes/
 LIBFT_DIR = ./libft/
                #      MINLBX_DIR = ./mlx_linux/
 
-OBJ_CLIENT		= $(SRC_CLIENT:.c=.o)
-OBJ_SERVER		= $(SRC_SERVER:.c=.o)
                   #   SRC_FILES = main.c ft_parsing.c ges_screan.c ft_suppl_fct.c event.c top_bande.c ft_ternary.c ft_loop_a.c
-                 #    OBJ_FILES = $(SRC_FILES:.c=.o)
+#OBJ_FILES = $(SRC_SERVER:.c=.o)
+#OBJ_FILES = $(SRC_CLIENT:.c=.o)
 
                          #        SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
-OBJ = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
+OBJ_SERVER2 = $(addprefix $(OBJ_DIR), $(OBJ_SERVER))
+OBJ_CLIENT2 = $(addprefix $(OBJ_DIR), $(OBJ_CLIENT))
+
 LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
                    #      MINLBX	= $(addprefix $(MINLBX_DIR), libmlx.a)
 
@@ -50,22 +53,21 @@ $(LIBFT):
                       #         $(MINLBX):
                      #             	@make -C $(MINLBX_DIR)
 
-$(NAME_SERVER): $(OBJ_SERVER)
-	$(CC) $(FLAGS) $(OBJ_SERVER) -o $(NAME_SERVER)
-	@echo "$(NAME) generated!"
+$(NAME_SERVER): $(OBJ_SERVER2)
+	$(CC) $(FLAGS) $(OBJ_SERVER2) -o $(NAME_SERVER) -L $(LIBFT_DIR) -lft
+	@echo "$(NAME_SERVER) generated!"
 
-$(NAME_SERVER): $(OBJ_SERVER)
-	$(CC) $(FLAGS) $(OBJ_SERVER) -o $(NAME_CLIENT)
-	@echo "$(NAME) generated!"
+$(NAME_CLIENT): $(OBJ_CLIENT2)
+	$(CC) $(FLAGS) $(OBJ_CLIENT2) -o $(NAME_CLIENT) -L libft/ -lft
+	@echo "$(NAME_CLIENT) generated!"
 
 clean:
-	rm -f $(OBJ_SERVER)
-	rm -f $(OBJ_CLIENT)
+	rm -Rf $(OBJ_DIR)
 	@make -C $(LIBFT_DIR) clean
 
 fclean: clean
-	@rm -f $(SRC_CLIENT)
-	@rm -f $(SRC_SERVER)
+	@rm -f $(NAME_SERVER)
+	@rm -f $(NAME_CLIENT)
 	@make -C $(LIBFT_DIR) fclean
 
 re: fclean all

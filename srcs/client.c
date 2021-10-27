@@ -6,11 +6,11 @@
 /*   By: ahammad <ahammad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 13:31:41 by ahammad           #+#    #+#             */
-/*   Updated: 2021/10/27 15:24:27 by ahammad          ###   ########.fr       */
+/*   Updated: 2021/10/27 17:42:51 by ahammad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minitalk.h"
+#include "minitalk.h"
 
 static void	char_to_binary(unsigned char c, int pid)
 {
@@ -45,7 +45,7 @@ int	main(int argc, char	**argv)
 	pid_server = ft_atoi(argv[1]);
 	while (argv[2][i])
 	{
-		char_to_bin(argv[2][i], pid_server);
+		char_to_binary(argv[2][i], pid_server);
 		usleep(100);
 		i++;
 	}

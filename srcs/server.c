@@ -6,11 +6,11 @@
 /*   By: ahammad <ahammad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 13:32:28 by ahammad           #+#    #+#             */
-/*   Updated: 2021/10/27 13:41:41 by ahammad          ###   ########.fr       */
+/*   Updated: 2021/10/27 17:40:14 by ahammad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minitalk.h"
+#include "minitalk.h"
 
 static void	build_the_char(int sig)
 {
