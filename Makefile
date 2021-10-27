@@ -6,14 +6,16 @@
 #    By: ahammad <ahammad@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/28 13:48:33 by ahammad           #+#    #+#              #
-#    Updated: 2021/10/27 14:36:47 by ahammad          ###   ########.fr        #
+#    Updated: 2021/10/27 15:43:21 by ahammad          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_CLIENT		= client.c
-SRC_SERVER		= server.c
+NAME_SERVER		= server
+NAME_CLIENT		= client
 
 #NAME = fdf
+SRC_SERVER		= server.c
+SRC_CLIENT		= client.c
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
