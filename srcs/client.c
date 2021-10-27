@@ -6,13 +6,13 @@
 /*   By: ahammad <ahammad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 13:31:41 by ahammad           #+#    #+#             */
-/*   Updated: 2021/10/27 13:41:50 by ahammad          ###   ########.fr       */
+/*   Updated: 2021/10/27 15:24:27 by ahammad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minitalk.h"
 
-static void	char_to_bin(unsigned char c, int pid)
+static void	char_to_binary(unsigned char c, int pid)
 {
 	unsigned int	bin;
 
