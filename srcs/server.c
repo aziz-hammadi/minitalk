@@ -6,7 +6,7 @@
 /*   By: ahammad <ahammad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 13:32:28 by ahammad           #+#    #+#             */
-/*   Updated: 2021/10/27 17:40:14 by ahammad          ###   ########.fr       */
+/*   Updated: 2021/10/28 22:15:29 by ahammad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,33 @@
 
 static void	build_the_char(int sig)
 {
-	static int	bin;
+	char		c;
+	static int	binary;
 	static int	result;
 	static int	power;
-	char		c;
 
 	if (power == 0)
-		bin = 128;
-	if (sig == SIGUSR2)
-		result += bin;
-	bin /= 2;
+		binary = 128;
+	if (sig == SIGUSR1)
+		result = result + binary;
+	binary = binary / 2;
 	power++;
 	if (power == 8)
 	{
 		c = result;
-		write(1, &c, 1);
+		ft_putchar(c);
 		power = 0;
-		bin = 128;
+		binary = 128;
 		result = 0;
 	}
 }
 
 int	main(void)
 {
-	printf("The PID is : %d\n", getpid());
-	signal(SIGUSR1, build_the_char);
 	signal(SIGUSR2, build_the_char);
+	signal(SIGUSR1, build_the_char);
+	printf("PID_SERVER : %d\n", getpid());
 	while (1)
 		pause();
+	return (0);
 }
